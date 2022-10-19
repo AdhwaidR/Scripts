@@ -1,0 +1,23 @@
+#!/bin/sh
+
+[ $(echo $0) = "/usr/bin/zsh" ] && echo "Default Shell is zsh"
+
+[ -d "$HOME/.local/bin" ] || mkdir -pv ".local/bin"
+
+
+# Enabling brighness control using xbacklight, this file should be placed in /etc/udev/rules.d
+echo "SUBSYSTEM=="backlight" , ACTION=="add" , \
+RUN+="/bin/chgrp video /sys/class/backlight/intel_backlight/brightness", \ 
+RUN+="/bin/chmod a+w /sys/class/backlight/intel_backlight/brightness",\
+RUN+="/bin/chmod a+w /sys/class/backlight/intel_backlight/max_brightness"" >> 90-backlight.rules
+
+
+# Enabling tap to touch, this file should be placed in /etc/X11/xorg.conf.d
+echo "Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+    Option "Tapping" "on"
+    Option "TappingButtonMap" "lmr"
+EndSection " >> 30-touchpad.conf
+

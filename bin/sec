@@ -1,0 +1,1 @@
+du -ad 2 ~/.config | grep "\/.*\/.*\/\..*\/.*\/\.*" | awk '{print $2}' | fzf --reverse --height=10 | xargs -r nvim

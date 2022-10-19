@@ -1,0 +1,40 @@
+#!/bin/sh
+
+clock=$(date '+%H')
+dat=$(date '+%d %B')
+case "$dat" in
+	"31 October")wicon="🎃";;
+	"02 December")wicon="🌴 ";;
+	"24 December")wicon="🎅";;
+	"25 December")wicon="🎄";;
+	"01 January")wicon="🎆";;
+	"26 January")wicon="🦚 ";;
+	"17 March")wicon="☘️";;
+	"01 July")wicon="🍁 ";;
+	"04 July")wicon="🗽 ";;
+	"15 August")wicon="🐯";;
+	*)wicon="📅";;
+esac
+
+if [ $clock -ge 4 ] && [ $clock -lt 7 ]
+then
+	icon="🌅"
+
+elif [ $clock -ge 7 ] && [ $clock -lt 17 ]
+then
+	icon="🏙"
+elif [ $clock -ge 17 ] && [ $clock -lt 19 ]
+then
+	icon="🌇 "
+else
+	icon="🌉"
+fi
+
+case $BUTTON in
+	1) setsid -f st -e calcurse;;
+	3) notify-send "⏳Date and Time Module" ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+date "+$wicon %d%b(%a)%Y $icon %H:%M"
+

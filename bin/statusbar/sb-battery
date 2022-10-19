@@ -1,0 +1,17 @@
+#!/bin/sh
+
+case $BUTTON in
+	3) notify-send "💻 Battery Module" "🔋: Discharging
+		🔌: Charging
+		⚡: Fully charged" ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+battery="$(cat /sys/class/power_supply/BAT0/capacity )"
+status=$(cat /sys/class/power_supply/BAT0/status)
+case "$status" in
+	"Charging") icon="🔌" ;;
+	"Discharging") icon="🔋 " ;;
+	"Full") icon="⚡";;
+esac
+echo $icon $battery"% "

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+case $BUTTON in
+	1) setsid -f st -e pulsemixer ;;
+	2) pamixer -t; pkill -RTMIN+10 dwmblocks;;
+	3) notify-send "📢 Volume module" "\- Shows volume 🔊, 🔇 if muted.
+- Middle click to mute.
+- Scroll to change." ;;
+	4) pamixer --allow-boost -i 1 ;;
+	5) pamixer --allow-boost -d 1 ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+[ $(pamixer --get-mute) = "true" ] && echo 🔇 && exit
+volume="$(pamixer --get-volume)"
+if [ $volume -gt 70 ]; then 
+	icon="🔊"                       
+elif [ $volume -gt 30 ]; then
+	icon="🔉"
+elif [ $volume -gt 0 ]; then
+	icon="🔈"
+fi
+
+echo "$icon $volume% "

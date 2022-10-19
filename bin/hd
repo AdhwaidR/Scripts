@@ -1,0 +1,1 @@
+ls -p --group-directories-first -A| grep "^\."

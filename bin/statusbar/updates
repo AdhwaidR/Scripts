@@ -1,0 +1,7 @@
+#!/bin/sh
+
+notify-send "📦 Repository Sync" "Checking for package updates..."
+
+sudo pacman -Syyuw --noconfirm || notify-send "Error downloading updates."
+
+pkill -RTMIN+8 dwmblocks

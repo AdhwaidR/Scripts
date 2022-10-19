@@ -1,0 +1,13 @@
+#!/bin/sh
+
+case $BUTTON in
+	3) notify-send "🔆 Brightness Module" ;;
+	4) xbacklight -inc 5 ;;
+	5) xbacklight -dec 5 ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+brigh="$(xbacklight -get)"
+[ $brigh -gt 50 ] && icon="🔆" || icon="🔅" 
+echo $icon $brigh
+

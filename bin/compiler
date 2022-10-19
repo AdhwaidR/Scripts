@@ -1,0 +1,14 @@
+#!/bin/sh 
+
+file=$(readlink -f "$1")
+dir=${file%/*}
+base="${file%.*}"
+ext="${file##*.}"
+
+cd "$dir" || exit 1
+
+case "$base" in 
+	py) setsid -f st -e python "$file" ;;
+	ms) preconv "$file" | groff -me -ms -kept -T pdf > "$base".pdf ;;
+	tex) pdflatex "$file" ;;
+esac
