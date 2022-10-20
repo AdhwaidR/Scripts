@@ -3,7 +3,7 @@
 case $BUTTON in
 	1) setsid -f st -e neomutt;;
 	2) mbsync hotmail;;
-	3) notify-send "Mail Module 📧";;
+	3) notify-send "📧 Mail Module";;
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 

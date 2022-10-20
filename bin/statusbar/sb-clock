@@ -25,14 +25,14 @@ then
 	icon="🏙"
 elif [ $clock -ge 17 ] && [ $clock -lt 19 ]
 then
-	icon="🌇 "
+	icon="🌇"
 else
 	icon="🌉"
 fi
 
 case $BUTTON in
 	1) setsid -f st -e calcurse;;
-	3) notify-send "⏳Date and Time Module" ;;
+	3) notify-send "⏳ Date and Time Module" ;;
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
