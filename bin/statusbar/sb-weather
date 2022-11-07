@@ -4,10 +4,10 @@
 # the moon phase for today. 
 # 
 
-weatherreport="${XDG_CACHE_HOME:-$HOME/.cache}/weatherreport"
+weatherreport="$HOME/.cache/weatherreport"
 
 case $BUTTON in
-	1) setsid -f "$TERMINAL " -e nvim "$weatherreport";;
+	1) setsid -f $TERMINAL -e nvim $weatherreport;;
 	2) getforecast;;
 	3) notify-send "🌈 Weather module";;
 	6) "$TERMINAL" -e "$EDITOR" "$0";;

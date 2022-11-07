@@ -4,5 +4,5 @@ weatherreport="${XDG_CACHE_HOME:-$HOME/.cache}/weatherreport"
 
 forecast() { curl -sf "wttr.in/Nottingham?format=%c+%t(A)+%m+%f(F)">"$weatherreport" && pkill -RTMIN+5 dwmblocks || exit 1 ; }
 
-notify-send "Fetching Weather Forecaast"
+notify-send "🌈Fetching Weather Forecaast"
 forecast
