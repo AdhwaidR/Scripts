@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bgloc="${XDG_DATA_HOME:-$HOME/.cache}/bg"
+bgloc="$HOME/.cache/bg"
 
 trueloc="$(readlink -f "$1")" &&
 case "$(file --mime-type -b "$trueloc")" in
