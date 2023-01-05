@@ -9,7 +9,8 @@ unmountusb() {
 	chosen="$(echo "$drives" | dmenu -i -p "Unmount which drive?")" || exit 1
 	chosen="$(echo "$chosen" | awk '{print $1}')"
 	[ -z "$chosen" ] && exit
-	sudo -A umount "$chosen" && notify-send "💻 USB unmounting" "$chosen unmounted."
+	sudo -A umount "$chosen" && notify-send "💻 USB unmounting" "$chosen unmounted." ||
+	notify-send -u critical "🖥️ Drive failed to unmount." "Possibly a permissions or I/O issue."
 	}
 
 unmountandroid() { \
