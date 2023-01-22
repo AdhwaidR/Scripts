@@ -1,5 +1,0 @@
-#!/bin/sh
-
-
-password=$(find . -type f -name '*.gpg' | sed "s/.*\/\(.*\)\.gpg$/\1/" | dmenu -i -l 5 -p "Pass:")
-[ -n "$password" ] && pass show -c "$password"
