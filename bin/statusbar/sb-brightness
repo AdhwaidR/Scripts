@@ -8,6 +8,6 @@ case $BUTTON in
 esac
 
 brigh="$(xbacklight -get)"
-[ $brigh -gt 50 ] && icon="🔆" || icon="🔅" 
+[ $brigh -ge 50 ] && icon="🔆" || icon="🔅" 
 echo $icon $brigh
 

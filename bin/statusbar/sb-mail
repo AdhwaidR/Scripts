@@ -2,12 +2,12 @@
 
 case $BUTTON in
 	1) setsid -f st -e neomutt;;
-	2) mbsync hotmail;;
+	2) syncmail;;
 	3) notify-send "📧 Mail Module";;
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-unread="$(ls -1 "/home/adhwaid/.local/share/mail/hotmail/INBOX/new" | wc -l 2>/dev/null)"
+unread="$(ls -1 "$HOME/.local/share/mail/hotmail/INBOX/new" | wc -l 2>/dev/null)"
 
 pidof mbsync >/dev/null 2>&1 icon="🔃 "
 
