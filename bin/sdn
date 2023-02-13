@@ -1,4 +1,11 @@
 #!/bin/sh
 
-lsblk -n | awk '{print $7}' | grep -q "/mnt/hd*" && notify-send "Drive Mounted" "Unmounting" break || [ $(echo "Shutdown \n Reboot" | dmenu -i -p "Shutdown or Reboot ?") = "Shutdown" ] && sudo shutdown now || sudo reboot
+checkmount() {
+lsblk -no MOUNTPOINT | grep -q "/mnt/.*" && dmenuumount;
+}
 
+preference() {
+[ $(echo "Shutdown \n Reboot" | dmenu -i -p "Shutdown or Reboot ?") = "Shutdown" ] && sudo shutdown now || sudo reboot
+}
+
+checkmount ; preference
