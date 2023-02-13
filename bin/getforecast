@@ -1,6 +1,6 @@
 #!/bin/sh
 
-weatherreport="${XDG_CACHE_HOME:-$HOME/.cache}/weatherreport"
+weatherreport="$HOME/.cache/weatherreport"
 
 forecast() { curl -sf "wttr.in/Nottingham?format=%c+%t(A)+%m+%f(F)">"$weatherreport" && pkill -RTMIN+5 dwmblocks || exit 1 ; }
 
