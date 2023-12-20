@@ -4,10 +4,13 @@
 
 xset r rate 300 50
 
-# Swap Caps and Esc
+# Swap Ctrl and Esc
+setxkbmap -option ctrl:swapcaps
 
-xmodmap -e 'keycode 66 = Escape'
-xmodmap -e 'keycode 9 = Caps_Lock'
+# When caps lock is pressed only once, treat it as escape.
+killall xcape 2>/dev/null ; xcape -e 'Control_L=Escape'
+
+# Temporary because keyboard is messed up
 xmodmap -e 'keycode 112 = asciitilde'
 xmodmap -e 'keycode 117 = grave'
 xmodmap -e 'clear lock'
